@@ -332,3 +332,16 @@ DELIMITER ;
 -- INSERT INTO friendships (user_id, friend_id, friendship_start_date) VALUES (21, 31, NOW());
 -- SELECT * FROM friendships
 -- SELECT * FROM friendship_logs
+
+
+-- vista para reportes de suscripciones por mes 
+
+CREATE VIEW SubscriptionsMonthlyReport AS
+SELECT
+    DATE_FORMAT(s.subscription_start_date, '%Y-%m') AS subscription_month,
+    COUNT(*) AS subscription_count
+FROM
+    subscriptions s
+GROUP BY
+    subscription_month;
+
